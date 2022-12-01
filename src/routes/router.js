@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const regController=require('../controllers/register_controller')
+const regController=require('../controllers/regController')
 const logController = require('../controllers/logController')
 
 //rutas para vistas
@@ -12,14 +12,14 @@ router.get('/login', (req, res)=>{
 })
 
 router.get('/register', (req, res)=>{
-    res.render('register')
+    res.render('register', {alert: false})
 })
 
 
 //rutas para controller
 
 router.post('/register', regController.register)
-router.post('/login', regController.login)
-router.get('/logout', regController.logout)
+router.post('/login', logController.login)
+router.get('/logout', logController.logout)
 
 module.exports = router

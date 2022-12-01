@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.84.0">
-    <title>Signin Template · Bootstrap v5.0</title>
+    <title>Reguistro</title>
 
     
 
@@ -98,7 +98,7 @@
 
                 <!-- Password input -->
                 <div class="form-outline mb-4">
-                  <input type="pass" id="pass" name="pass" class="form-control" />
+                  <input type="password" id="pass" name="pass" class="form-control" />
                   <label class="form-label" for="pass">Password</label>
                 </div>
 
@@ -118,17 +118,33 @@
                   </div>
                 </div>
                 
-
+                
 
               </form>
+              
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
   <!-- Jumbotron -->
 </section>
-    
+  <% if(alert) { %>
+    <script>
+      Swal.fire({
+        title: '<%= alertTitle%>',
+        text: '<%= alertMenssage%>',
+        icon: '<%= alertIcon%>',
+        showConfirmButton: '<%= showConfirmButton %>',
+        timer: '<% timer %>'
+      }).then(()=>{
+        window.location='/<%= ruta %>'
+      })
+
+    </script>
+
+  <% }%>
   </body>
 </html>

@@ -27,7 +27,7 @@ app.use(cookieParser())
 
 //routes
 
-app.use('/', require('./routes/router'))
+app.use('/', require('./src/routes/router'))
 
 
 //para borrar cache y evitar que vuelvan a atras

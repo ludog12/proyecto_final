@@ -1,6 +1,8 @@
 const jwt = require('jsonwebtoken');
 const bcryptjs = require('bcryptjs');
-const conexion = require('../database/db')
+const conexion = require('../../database/db')
+
+
 
 exports.register = async(req, res)=>{
     try {
@@ -10,7 +12,21 @@ exports.register = async(req, res)=>{
         const select= req.body.select
         const email= req.body.email
         const pass= req.body.pass
+
+ 
         let passHash = await bcryptjs.hash(pass, 8)
+
+        if(!name || !email || !pass){
+            return res.render('register',{
+                alert:true,
+                alertTitle: "Advertencia",
+                alertMenssage: "INGRESA DATOS",
+                alertIcon: "info",
+                showConfirmButton: true,
+                timer: false,
+                ruta: 'register'
+            })
+        }
         
         conexion.query('INSERT INTO personas SET ?', {nom_apell:name, DNI:dni, fecha_nac:nac, domicilio:null, id_tipo_sangre:null, id_tipo_persona:null, id_sexo: select}, (error, results)=>{
             if(error){console.log(error)}
